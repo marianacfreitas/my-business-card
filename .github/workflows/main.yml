@@ -10,8 +10,10 @@ jobs:
         uses: xu-cheng/latex-action@v4
         with:
           root_file: card.tex
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v6
-        with:
-          name: PDF
-          path: card.pdf
+      - name: Commit card.pdf
+        run: |
+          git config user.name "marianacfreitas"
+          git config user.email "marianacfreitas2004@gmail.com"
+          git add card.pdf
+          git commit -m "Update card.pdf" || exit 0
+          git push
